@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Chat</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="ru" />
+    <link href="style.css" rel="stylesheet" />
+
+</head>
+<body>
+<div class="chat">
+
+    <div class="header">
+        <div class="title">Chat</div>
+    </div>
+
+    <div class="main">
+        <div class="messages" id="chat"> </div>
+        <div class="people">
+            <div class="peopleTitle">In chat <span class="usersCount" id="count">0</span> people:</div>
+            <ul class="peopleList" id="people"></ul>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="enter">
+            <div class="username"> <input type="text" id="username" placeholder="Username"/> </div>
+            <div class="connection"> <button type="button" id="connect" class="connectButton" onclick="connect();" >Connect</button> </div>
+            <div class="exit"> <button type="button" id="exit" class="exitButton" onclick="exit();" disabled >Exit</button> </div>
+        </div>
+        <div class="panel">
+            <div class="receiver"><input id="to" type="text" placeholder="Addressee : all" /></div>
+            <div class="sendTextPanel"><input id="message" type="text" placeholder="Your message" class="inputText"  /></div>
+            <div class="sendButtonPanel"><button type="button" class="sendButton" onclick="send();">Send</button> </div>
+        </div>
+    </div>
+
+</div>
+</body>
+
+<script src="script.js"></script>
+
+</html>

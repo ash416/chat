@@ -1,0 +1,217 @@
+html {height:100%;}
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+    background-color:#ffffff;
+}
+.chat {
+    position:absolute;
+    right:0;
+    top:0;
+    bottom:0;
+    left:0;
+    font:normal 10pt Arial;
+    overflow:hidden;
+    border:50px solid black;
+}
+
+.header {
+    border: 3px solid white;
+    top:0;
+    left:0;
+    right:0;
+    height:100px;
+    background-color:black;
+}
+
+.title {
+    position: center;
+    margin-top:30px;
+    margin-left: 30px;
+    font-weight:bold;
+    font-size: 35px;
+    color: white;
+    text-shadow:1px 1px 0 black;
+}
+
+.main {
+    position:absolute;
+    left:3px;
+    right:0;
+    top:107px;
+    bottom:63px;
+}
+
+
+.messages {
+    border: 8px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-right: 257px;
+    bottom: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: white;
+}
+
+.message{
+    padding-left: 25px;
+    line-height: 2em;
+    font-size: medium;
+    font-style: normal;
+    color: black;
+    display: block;
+    overflow: hidden;
+}
+
+.people {
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    width:250px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    background: black;
+    border-left:3px solid white;
+    border-right:3px solid white;
+}
+
+.peopleTitle {
+    position:absolute;
+    top:5px;
+    left:10px;
+    color: white;
+    font-size: x-large;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+
+.usersCount {
+    color: white;
+    font-style: inherit;
+    font-weight:bold;
+}
+
+.peopleList {
+    position:absolute;
+    top:20px;
+    left: -10px;
+    font-size: large;
+    overflow-x:hidden;
+    overflow-y:auto;
+    color: white;
+}
+
+.person{
+    line-height: 1.2em;
+    display: block;
+    overflow: hidden;
+}
+
+
+.footer {
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
+    height:62px;
+    background:black;
+    font-weight:bold;
+    border:3px solid white;
+}
+
+.enter {
+    position:absolute;
+    left:15px;
+    top:0;
+    line-height: 62px;
+}
+
+.username {
+    position:absolute;
+    left:0px;
+    top:5px;
+    line-height: 20px;
+}
+
+.receiver {
+    position:absolute;
+    left:15px;
+    top:30px;
+}
+
+.sendTextPanel {
+    position:absolute;
+    left:200px;
+    top:30px;
+    right:204px;
+}
+
+
+
+.inputText {
+    width:100%;
+    box-sizing: border-box;
+    background:#ffffff;
+}
+
+.sendButtonPanel {
+    position:absolute;
+    top:30px;
+    right:117px;
+}
+.sendButton {
+    width:81px;
+    height: 22px;
+    font-size: medium;
+    font-weight: bold;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.connection {
+    position:absolute;
+    left:185px;
+    top:5px;
+    line-height: 20px;
+}
+
+.connectButton  {
+    width:81px;
+    height: 22px;
+    font-size: medium;
+    font-weight: bold;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+
+
+
+.exit {
+    height: 22px;
+    position:absolute;
+    left:185px;
+    top:5px;
+    line-height: 20px;
+    visibility: hidden;
+}
+
+.exitButton  {
+    width:81px;
+    height: 22px;
+    font-size: medium;
+    font-weight: bold;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+
+
+
+
