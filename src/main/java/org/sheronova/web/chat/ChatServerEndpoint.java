@@ -1,4 +1,4 @@
-package org.chat.sheronova;
+package org.sheronova.web.chat;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,8 +11,8 @@ import javax.websocket.server.ServerEndpoint;
 
 @ServerEndpoint(
         value="/chat/{username}",
-        decoders = DataDecoder.class,
-        encoders = DataEncoder.class
+        decoders = { DataDecoder.class },
+        encoders = { DataEncoder.class }
 )
 
 public class ChatServerEndpoint {
@@ -49,10 +49,14 @@ public class ChatServerEndpoint {
         for (String user: users.values()) {
             listUsers += "<li class='person'>" + user + "</li>";
         }
-        message.setUsers(listUsers);
-        message.setUsersCount(users.size());
-        message.setSender(users.get(session.getId()));
-        sendMessage(message);
+        Data response = new Data();
+        log.info(message.getAddr() + " " + message.getSender() + " " + message.getContent());
+        response.setUsers(listUsers);
+        response.setUsersCount(users.size());
+        response.setSender(users.get(session.getId()));
+        response.setAddr(message.getAddr());
+        response.setContent(message.getContent());
+        sendMessage(response);
     }
 
     @OnClose
@@ -70,7 +74,7 @@ public class ChatServerEndpoint {
         message.setUsers(listUsers);
         message.setUsersCount(users.size());
         message.setContent("disconnected!");
-        broadcast(message);
+        sendMessage(message);
     }
 
     @OnError
@@ -89,12 +93,12 @@ public class ChatServerEndpoint {
     private static void sendMessage(Data message) throws IOException, EncodeException {
         for (ChatServerEndpoint endpoint : chatEndpoints) {
             synchronized(endpoint) {
-                if (message.getAddr().length() == 0 && !endpoint.session.getId().equals(getSessionId(message.getSender()))) {
+                if (message.getContent().contains("disconnected!") || message.getContent().contains("connected!"))
                     endpoint.session.getBasicRemote().sendObject(message);
-                }
-                else if (endpoint.session.getId().equals(getSessionId(message.getAddr()))) {
+                else if (message.getAddr().length() == 0 && !endpoint.session.getId().equals(getSessionId(message.getSender())))
                     endpoint.session.getBasicRemote().sendObject(message);
-                }
+                else if (endpoint.session.getId().equals(getSessionId(message.getAddr())))
+                    endpoint.session.getBasicRemote().sendObject(message);
             }
         }
     }

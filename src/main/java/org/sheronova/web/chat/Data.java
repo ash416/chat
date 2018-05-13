@@ -1,4 +1,4 @@
-package org.chat.sheronova;
+package org.sheronova.web.chat;
 
 public class Data {
 

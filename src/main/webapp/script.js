@@ -23,7 +23,10 @@ function connect() {
         if (data.content === "connected!" || data.content === "disconnected!")
             chat.innerHTML += "<div class=\"message\" style='font-style: oblique; font-weight: bold'> " + "<span style='font-weight: bold'>" + data.sender + " </span> " + " : " + data.content + "</div>";
         else
-            chat.innerHTML += "<div class=\"message\"> " + "<span style='font-weight: bold'>" + data.from + " </span> " + " : " + data.content + "</div>";
+            if (data.addr === "")
+                chat.innerHTML += "<div class=\"message\"> " + "<span style='font-weight: bold'>" + data.sender + " </span> " + " : " + data.content + "</div>";
+            else
+                chat.innerHTML += "<div class=\"message\"> " + "<span style='font-weight: bold'>" + data.sender + "</span> (for you) " + " : " + data.content + "</div>";
     };
 }
 
@@ -33,12 +36,15 @@ function send() {
         var content = message.value;
         var to = document.getElementById("to").value;
         var json = JSON.stringify({
-            "to": to,
+            "addr": to,
             "content": content
         });
         message.value = "";
         ws.send(json);
-        chat.innerHTML += "<div class=\"message\"> " + "<span style='font-weight: bold; color: #23282b'>Me</span>   : " + content + "</div>";
+        if (to === "")
+            chat.innerHTML += "<div class=\"message\"> " + "<span style='font-weight: bold; color: #23282b'>Me</span>   : " + content + "</div>";
+        else
+            chat.innerHTML += "<div class=\"message\"> " + "<span style='font-weight: bold; color: #23282b'>Me to "+ to + "</span>   : " + content + "</div>";
     }
 }
 
