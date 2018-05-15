@@ -39,7 +39,7 @@ public class ChatServerEndpoint {
         message.setUsersCount(users.size());
         message.setSender(username);
         message.setContent("connected!");
-        broadcast(message);
+        sendMessage(message);
     }
 
     @OnMessage
@@ -82,13 +82,6 @@ public class ChatServerEndpoint {
         log.warning(throwable.toString());
     }
 
-    private static void broadcast(Data message) throws IOException, EncodeException {
-        for (ChatServerEndpoint endpoint : chatEndpoints) {
-            synchronized(endpoint) {
-                endpoint.session.getBasicRemote().sendObject(message);
-            }
-        }
-    }
 
     private static void sendMessage(Data message) throws IOException, EncodeException {
         for (ChatServerEndpoint endpoint : chatEndpoints) {
